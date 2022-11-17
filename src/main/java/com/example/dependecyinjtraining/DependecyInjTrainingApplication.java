@@ -1,9 +1,6 @@
 package com.example.dependecyinjtraining;
 
-import com.example.dependecyinjtraining.controllers.ConstructorInjectedController;
-import com.example.dependecyinjtraining.controllers.MyController;
-import com.example.dependecyinjtraining.controllers.PropertyInjectedController;
-import com.example.dependecyinjtraining.controllers.SetterInjectedController;
+import com.example.dependecyinjtraining.controllers.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -35,6 +32,12 @@ public class DependecyInjTrainingApplication {
         ConstructorInjectedController constructorInjectedController = (ConstructorInjectedController) context.getBean("constructorInjectedController");
 
         System.out.println(constructorInjectedController.getGreeting());
+
+        System.out.println("-------------------------- Profiles ------------------");
+
+        I18nController i18nController = (I18nController) context.getBean("i18nController");
+
+        System.out.println(i18nController.sayHello());
     }
 
 }
