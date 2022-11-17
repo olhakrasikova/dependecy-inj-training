@@ -16,8 +16,9 @@ public class DependecyInjTrainingApplication {
 
         MyController controller = (MyController) context.getBean("myController");
 
-        String greeting = controller.sayHello();
-        System.out.println(greeting);
+        System.out.println("-------------------------- Primary Bean ------------------");
+
+        System.out.println(controller.sayHello());
 
         System.out.println("-------------------------- Property ------------------");
 

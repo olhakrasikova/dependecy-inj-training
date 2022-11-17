@@ -1,13 +1,18 @@
 package com.example.dependecyinjtraining.controllers;
 
+import com.example.dependecyinjtraining.services.GreetingService;
 import org.springframework.stereotype.Controller;
 
 @Controller
 public class MyController {
 
-    public String sayHello(){
-        System.out.println("Hello");
+    private final GreetingService greetingService;
 
-        return "Hello";
+    public MyController(GreetingService greetingService) {
+        this.greetingService = greetingService;
+    }
+
+    public String sayHello(){
+        return greetingService.sayGreeting();
     }
 }
