@@ -1,5 +1,7 @@
 package com.example.dependecyinjtraining.config;
 
+import com.example.dependecyinjtraining.repositories.EnglishGreetingRepository;
+import com.example.dependecyinjtraining.repositories.EnglishGreetingRepositoryImpl;
 import com.example.dependecyinjtraining.services.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -8,6 +10,11 @@ import org.springframework.context.annotation.Profile;
 
 @Configuration
 public class GreetingServiceConfig {
+
+    @Bean
+    EnglishGreetingRepository englishGreetingRepository(){
+        return new EnglishGreetingRepositoryImpl();
+    }
 
     @Primary
     @Bean
@@ -31,8 +38,8 @@ public class GreetingServiceConfig {
 
     @Profile("EN")
     @Bean
-    I18nEnglishGreetingService I18nService(){
-        return new I18nEnglishGreetingService();
+    I18nEnglishGreetingService I18nService(EnglishGreetingRepository englishGreetingRepository){
+        return new I18nEnglishGreetingService(englishGreetingRepository);
     }
 
     @Profile({"ES", "default"})
